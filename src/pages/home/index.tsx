@@ -9,7 +9,7 @@ interface IHomeProps {
   backurl?: string
 }
 
-const Home: React.FC<any> = observer((props) => {
+const Home: React.FC<any> = observer(props => {
   const { backurl, title } = props
 
   const counterStore = useStores('counterStore')

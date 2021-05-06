@@ -35,6 +35,19 @@ const routesConfig: RouteConfig[] = [
       },
     ],
   },
+  // web页面的路由
+  {
+    path: '/web',
+    exact: false,
+    component: Layout,
+    routes: [
+      {
+        path: '/',
+        exact: false,
+        component: loadable(() => import('@/pages/web')),
+      },
+    ],
+  },
 ]
 
 export default routesConfig

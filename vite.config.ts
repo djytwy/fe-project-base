@@ -7,9 +7,11 @@ import path from 'path'
 import fs from 'fs'
 import dotenv from 'dotenv'
 import { minifyHtml } from 'vite-plugin-html'
+import compress from 'vite-plugin-compress'
 
 const config: UserConfigExport = {
   plugins: [
+    compress(),
     reactRefresh(),
     legacy({
       targets: [
@@ -25,7 +27,7 @@ const config: UserConfigExport = {
     vitePluginImp({
       libList: [
         {
-          libName: 'antd-mobile',
+          libName: 'antd',
           style: name => `antd-mobile/es/${name}/style`,
           libDirectory: 'es',
         },
@@ -112,6 +114,7 @@ export default ({ command, mode }: ConfigEnv) => {
         open: true,
         gzipSize: true,
         brotliSize: true,
+        sourcemap: true,
       }),
     ]
   }

@@ -2,7 +2,7 @@ import { useStores } from '@/hooks'
 import { observer } from 'mobx-react'
 import React from 'react'
 
-const H5Home: React.FC = observer((props) => {
+const H5Home: React.FC = observer(props => {
   const counterStore = useStores('counterStore')
   return (
     <>

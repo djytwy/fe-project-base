@@ -3,7 +3,7 @@ import commonStore from './common'
 
 const _store = {
   counterStore,
-  commonStore
+  commonStore,
 }
 
 export type StoreType = typeof _store
