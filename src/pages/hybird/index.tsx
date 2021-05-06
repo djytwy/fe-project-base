@@ -2,7 +2,7 @@ import { useStores } from '@/hooks'
 import { observer } from 'mobx-react'
 import React from 'react'
 
-const HybirdHome: React.FC = observer((props) => {
+const HybirdHome: React.FC = observer(props => {
   const commonStore = useStores('commonStore')
 
   return (

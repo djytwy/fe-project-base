@@ -3,6 +3,7 @@
   "tabWidth": 2,
   "bracketSpacing": true,
   "trailingComma": "none",
+  "htmlWhitespaceSensitivity": "strict",
   "printWidth": 100,
   "semi": false,
   "overrides": [

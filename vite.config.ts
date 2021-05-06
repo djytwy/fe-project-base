@@ -18,31 +18,27 @@ const config: UserConfigExport = {
         'Safari >= 10.1',
         'iOS >= 10.3',
         '> 1%',
-        'not IE 11'
-      ]
+        'not IE 11',
+      ],
     }),
     // antd-mobile 按需引入
     vitePluginImp({
       libList: [
         {
           libName: 'antd-mobile',
-          style: (name) => `antd-mobile/es/${name}/style`,
-          libDirectory: 'es'
-        }
-      ]
-    })
+          style: name => `antd-mobile/es/${name}/style`,
+          libDirectory: 'es',
+        },
+      ],
+    }),
   ],
   resolve: {
     alias: [
       {
         find: /@\//,
-        replacement: path.join(__dirname, './src/')
-      }
-    ]
-    // 以下配置，在 window 电脑跑不起来
-    // alias: {
-    //   '@/': path.join(__dirname, './src/')
-    // }
+        replacement: path.join(__dirname, './src/'),
+      },
+    ],
   },
   css: {
     preprocessorOptions: {
@@ -51,13 +47,13 @@ const config: UserConfigExport = {
         javascriptEnabled: true,
         // antd 定制主题样式
         modifyVars: {
-          '@fill-body': '#fff'
-        }
-      }
+          '@fill-body': '#fff',
+        },
+      },
     },
     modules: {
-      localsConvention: 'camelCase'
-    }
+      localsConvention: 'camelCase',
+    },
   },
   build: {
     target: 'es2015',
@@ -65,9 +61,9 @@ const config: UserConfigExport = {
     cssCodeSplit: true,
     polyfillDynamicImport: true,
     rollupOptions: {
-      plugins: []
-    }
-  }
+      plugins: [],
+    },
+  },
 }
 
 export default ({ command, mode }: ConfigEnv) => {
@@ -76,7 +72,7 @@ export default ({ command, mode }: ConfigEnv) => {
     /** mode local file */ `.env.${mode}.local`,
     /** mode file */ `.env.${mode}`,
     /** local file */ `.env.local`,
-    /** default file */ `.env`
+    /** default file */ `.env`,
   ]
   const { plugins = [], build = {} } = config
   const { rollupOptions = {} } = build
@@ -104,7 +100,7 @@ export default ({ command, mode }: ConfigEnv) => {
     // 压缩 Html 插件
     config.plugins = [...plugins, minifyHtml()]
     config.define = {
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
     }
   }
 
@@ -115,8 +111,8 @@ export default ({ command, mode }: ConfigEnv) => {
       visualizer({
         open: true,
         gzipSize: true,
-        brotliSize: true
-      })
+        brotliSize: true,
+      }),
     ]
   }
 
@@ -128,9 +124,9 @@ export default ({ command, mode }: ConfigEnv) => {
         api: {
           target: process.env.VITE_API_HOST,
           changeOrigin: true,
-          rewrite: (path: any) => path.replace(/^\/api/, '')
-        }
-      }
+          rewrite: (path: any) => path.replace(/^\/api/, ''),
+        },
+      },
     }
   }
   return config

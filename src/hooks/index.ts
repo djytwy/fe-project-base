@@ -5,7 +5,7 @@ import { StoreType } from '@/stores'
 
 // 获取浏览器 ?后面的参数
 export function useQuery() {
-  const query: { [x: string]: string } = {}
+  const query: { [x: string]: string; } = {}
   const search = useLocation().search
   const params = new URLSearchParams(search)
   params.forEach((val, key) => {

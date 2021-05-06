@@ -7,7 +7,7 @@ const routesConfig: RouteConfig[] = [
   {
     path: '/',
     exact: true,
-    component: Home
+    component: Home,
   },
   // APP 路由
   {
@@ -18,9 +18,9 @@ const routesConfig: RouteConfig[] = [
       {
         path: '/',
         exact: false,
-        component: loadable(() => import('@/pages/hybird'))
-      }
-    ]
+        component: loadable(() => import('@/pages/hybird')),
+      },
+    ],
   },
   // H5 相关路由
   {
@@ -31,10 +31,10 @@ const routesConfig: RouteConfig[] = [
       {
         path: '/',
         exact: false,
-        component: loadable(() => import('@/pages/h5'))
-      }
-    ]
-  }
+        component: loadable(() => import('@/pages/h5')),
+      },
+    ],
+  },
 ]
 
 export default routesConfig
