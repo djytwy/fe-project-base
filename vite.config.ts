@@ -23,12 +23,12 @@ const config: UserConfigExport = {
         'not IE 11',
       ],
     }),
-    // antd-mobile 按需引入
+    // antd 按需引入
     vitePluginImp({
       libList: [
         {
           libName: 'antd',
-          style: name => `antd-mobile/es/${name}/style`,
+          style: name => `antd/es/${name}/style`,
           libDirectory: 'es',
         },
       ],
@@ -71,13 +71,10 @@ const config: UserConfigExport = {
 export default ({ command, mode }: ConfigEnv) => {
   // 官方策略顺序
   const envFiles = [
-    /** mode local file */ `.env.${mode}.local`,
     /** mode file */ `.env.${mode}`,
-    /** local file */ `.env.local`,
     /** default file */ `.env`,
   ]
   const { plugins = [], build = {} } = config
-  const { rollupOptions = {} } = build
 
   for (const file of envFiles) {
     try {
@@ -94,37 +91,30 @@ export default ({ command, mode }: ConfigEnv) => {
   }
 
   const isBuild = command === 'build'
-  // const base = isBuild ? process.env.VITE_STATIC_CDN : '//localhost:3000/'
-
   config.base = process.env.VITE_STATIC_CDN
 
   if (isBuild) {
     // 压缩 Html 插件
-    config.plugins = [...plugins, minifyHtml()]
+    config.plugins = [
+      ...plugins,
+      minifyHtml(),
+      visualizer({
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+      }),
+    ]
     config.define = {
       'process.env.NODE_ENV': '"production"',
     }
   }
 
-  if (process.env.VISUALIZER) {
-    const { plugins = [] } = rollupOptions
-    rollupOptions.plugins = [
-      ...plugins,
-      visualizer({
-        open: true,
-        gzipSize: true,
-        brotliSize: true,
-        sourcemap: true,
-      }),
-    ]
-  }
-
-  // 在这里无法使用 import.meta.env 变量
+  // 开发服务器的代理
   if (command === 'serve') {
     config.server = {
       // 反向代理
       proxy: {
-        api: {
+        '/api': {
           target: process.env.VITE_API_HOST,
           changeOrigin: true,
           rewrite: (path: any) => path.replace(/^\/api/, ''),
