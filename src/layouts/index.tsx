@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { RouteConfigComponentProps, renderRoutes } from 'react-router-config'
 
 const Layout: React.FC<RouteConfigComponentProps> = React.memo(function Layout(props) {

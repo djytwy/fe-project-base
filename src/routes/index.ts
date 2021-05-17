@@ -1,13 +1,12 @@
 import loadable from '@loadable/component'
 import Layout, { H5Layout } from '@/layouts'
 import { RouteConfig } from 'react-router-config'
-import Home from '@/pages/home'
 
 const routesConfig: RouteConfig[] = [
   {
     path: '/',
     exact: true,
-    component: Home,
+    component: loadable(() => import('@/pages/home')),
   },
   // APP 路由
   {

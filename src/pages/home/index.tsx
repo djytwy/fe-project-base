@@ -1,6 +1,6 @@
 import { useStores } from '@/hooks'
 import { observer } from 'mobx-react'
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './index.module.less'
 
@@ -14,6 +14,7 @@ const Home: React.FC<any> = observer(props => {
 
   const counterStore = useStores('counterStore')
   const commonStore = useStores('commonStore')
+  const [tabsData, setTabsData] = React.useState([])
 
   return (
     <>
@@ -25,6 +26,9 @@ const Home: React.FC<any> = observer(props => {
       </p>
       <p className={styles.row}>
         <Link to="/hybird/">hybird 模块</Link>
+      </p>
+      <p className={styles.row}>
+        <Link to={{ pathname: '/web', state: { name: 'params' } }}>web 模块</Link>
       </p>
     </>
   )
