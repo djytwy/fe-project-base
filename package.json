@@ -7,6 +7,11 @@
     "build:dev": "tsc && vite build -m qa",
     "serve": "vite preview"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "eslint --cache --fix",
