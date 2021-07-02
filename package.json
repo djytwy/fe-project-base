@@ -7,11 +7,6 @@
     "build:dev": "tsc && vite build -m qa",
     "serve": "vite preview"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "eslint --cache --fix",
@@ -40,6 +35,9 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@ice/spec": "^1.0.1",
     "@testing-library/react": "^12.0.0",
     "@types/babel__core": "^7.1.14",
     "@types/ejs": "^3.0.6",
@@ -57,9 +55,9 @@
     "dotenv": "^10.0.0",
     "eslint": "^7.29.0",
     "eslint-config-alloy": "^4.1.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-react": "^7.24.0",
-    "husky": "4.2.3",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
     "less": "^4.1.1",
     "lint-staged": "^11.0.0",
     "postcss": "^8.3.5",
