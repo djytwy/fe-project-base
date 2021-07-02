@@ -4,7 +4,7 @@
   "bracketSpacing": true,
   "trailingComma": "none",
   "htmlWhitespaceSensitivity": "strict",
-  "printWidth": 100,
+  "printWidth": 120,
   "semi": false,
   "overrides": [
     {
